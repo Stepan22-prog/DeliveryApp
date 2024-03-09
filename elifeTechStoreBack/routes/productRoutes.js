@@ -1,12 +1,13 @@
 import { Router } from "express";
-import { productService } from "../services/productService.js";
 import { responseMiddleware } from "../middlewares/response.js";
+import productService from "../services/productService.js";
+
 
 const router = Router();
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
-    res.data = productService.getAll();
+    res.data = await productService.getAllProducts();
   } catch (err) {
     res.err = err.message;
   } finally {
