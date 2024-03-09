@@ -1,0 +1,14 @@
+.header {
+    padding: 10px 0;
+}
+
+.header-link {
+    font-size: 18px;
+    color: black;
+}
+
+.header-link:first-child {
+    padding-right: 15px;
+    border-right: 1px solid;
+    margin-right: 15px;
+}
