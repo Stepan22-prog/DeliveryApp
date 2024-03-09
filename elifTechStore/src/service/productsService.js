@@ -2,7 +2,7 @@ import API from "./api";
 
 class ProductService extends API {
     async getProducts() {
-        return this.makeQuery({
+        return await this.makeQuery({
             url: '/products',
         })
     }

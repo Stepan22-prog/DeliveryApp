@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom"
-
 export default function Product({title, img, price, setToCart}) {
   return (
     <div className="product">
