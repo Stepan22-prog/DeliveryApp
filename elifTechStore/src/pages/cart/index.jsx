@@ -35,6 +35,11 @@ export default function Cart({ cart, setToCart }) {
       setAddressError(true);
       error = true;
     }
+
+    if (cart.length < 0) {
+      error = true;
+    }
+
     return error;
   }
 

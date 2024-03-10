@@ -10,6 +10,12 @@
   flex-direction: column;
 }
 
+.from__error {
+  margin: 3px 0 0 0;
+  color: red;
+  font-size: 14px;
+}
+
 .form__item:not(:last-child) {
   margin-bottom: 15px;
 }

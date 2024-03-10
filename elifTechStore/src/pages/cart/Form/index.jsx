@@ -12,6 +12,7 @@ export default function Form({
 				<label htmlFor="name" className="from__label">Name:</label>
 				<Input
 					id="name"
+					error={nameError}
 					value={name}
 					setValue={setName}
 				/>
@@ -21,6 +22,7 @@ export default function Form({
 				<label htmlFor="email" className="from__label">Email:</label>
 				<Input
 					id="email"
+					error={emailError}
 					value={email}
 					setValue={setEmail}
 				/>
@@ -30,6 +32,7 @@ export default function Form({
 				<label htmlFor="phone" className="from__label">Phone:</label>
 				<Input
 					id="name"
+					error={phoneError}
 					value={phone}
 					setValue={setPhone}
 				/>
@@ -39,6 +42,7 @@ export default function Form({
 				<label htmlFor="address" className="from__label">Address:</label>
 				<Input
 					id="address"
+					error={addressError}
 					value={address}
 					setValue={setAddress}
 				/>

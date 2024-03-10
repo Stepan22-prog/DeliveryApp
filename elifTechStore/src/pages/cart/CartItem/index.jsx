@@ -9,7 +9,11 @@ export default function CartItem({ id, title, photo, count, price, setToCart }) 
       )
     })
   }
-  
+
+  function deleteItem() {
+    setToCart(prevValue => prevValue.filter(currentItem => currentItem.id !== id))
+  }
+
   return (
     <div className="cart-item">
       <div className="cart-item__img">
@@ -29,7 +33,7 @@ export default function CartItem({ id, title, photo, count, price, setToCart }) 
         </div>
         <div className="cart-item-info__row">
           <h3 className="cart-item-info__price">{count * price}</h3>
-          <button className="cart-item-info__delete">delete</button>
+          <button className="cart-item-info__delete" onClick={() => deleteItem()}>delete</button>
         </div>
       </div>
     </div>
