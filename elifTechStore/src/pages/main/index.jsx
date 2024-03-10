@@ -25,7 +25,7 @@ export default function Main({ setToCart }) {
 			title={product.title} 
 			img={product.photo}
 			price={product.price}
-			setToCart={() => setToCart(prevState => [...prevState, product.id])}
+			setToCart={setToCart}
 		/>)
 	})}
 	</div>
