@@ -22,6 +22,7 @@ export default function Main({ setToCart }) {
 		{products.length > 0 && products.map((product) => {
 		return (<Product 
 			key={product.id} 
+			id={product.id}
 			title={product.title} 
 			img={product.photo}
 			price={product.price}

@@ -1,4 +1,5 @@
-import Input from "../../../shared/Input"
+import Input from "../../../shared/Input";
+import './from.css';
 
 export default function Form({
 	name, email, phone, address, setName, setEmail,

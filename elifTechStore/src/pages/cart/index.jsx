@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Form from "./Form";
 import CartItem from "./CartItem";
+import './cart.css'
 
 export default function Cart({ cart, setToCart }) {
   const [name, setName] = useState('');
@@ -28,20 +29,23 @@ export default function Cart({ cart, setToCart }) {
           phoneError={phoneError}
           addressError={addressError}
         />
-        {cart.length > 0
-        ? cart.map((cartItem) => <CartItem 
-          key={cartItem.id}
-          title={cartItem.title}
-          photo={cartItem.photo}
-          count={cartItem.count}
-          price={cartItem.price}
-          setToCart={setToCart}
-        />)
-        : <h2>No Items</h2>}
+        <div className="cart-items">
+          {cart.length > 0
+          ? cart.map((cartItem) => <CartItem 
+            key={cartItem.id}
+            id={cartItem.id}
+            title={cartItem.title}
+            photo={cartItem.photo}
+            count={cartItem.count}
+            price={cartItem.price}
+            setToCart={setToCart}
+          />)
+          : <h2>No Items</h2>}
+        </div>
       </div>
       <div className="cart__bottom">
-        <div className="cart__total-price">Total price: {cart.reduce((price, cartItem) => price + (cartItem.price * cartItem.count), 0)}</div>
-        <button className="cart__button">Submit</button>
+        <h2 className="cart__total-price">Total price: {cart.reduce((price, cartItem) => price + (cartItem.price * cartItem.count), 0)}</h2>
+        <button className="cart__button button">Submit</button>
       </div>
     </div>
   )
