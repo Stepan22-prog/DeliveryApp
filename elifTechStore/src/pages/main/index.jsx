@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Product from "./Product";
 import ProductService from "../../service/productsService";
+import './main.css';
 
 const productService = new ProductService();
 
@@ -16,13 +17,17 @@ export default function Main({ setToCart }) {
 		getProducts();
 	}, []);
 
-  return products.length > 0 && products.map((product) => {
+  return (
+	<div className="product-list">
+		{products.length > 0 && products.map((product) => {
 		return (<Product 
 			key={product.id} 
 			title={product.title} 
 			img={product.photo}
 			price={product.price}
-			setToCart={() => setToCart(product.id)}
+			setToCart={() => setToCart(prevState => [...prevState, product.id])}
 		/>)
-	})
+	})}
+	</div>
+	)
 }
