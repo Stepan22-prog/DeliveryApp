@@ -57,7 +57,7 @@ export default function Cart({ cart, setToCart }) {
       email,
       phone,
       address,
-      products: cart.map((cartItem) => ({productId: cartItem.id, quantity: cartItem.count})),
+      products: cart.map((cartItem) => ({productId: cartItem.id, quantity: cartItem.count, price: cartItem.price})),
       totalPrice: calculateTotalPrice(),
     }
 

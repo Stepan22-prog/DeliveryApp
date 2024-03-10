@@ -5,7 +5,7 @@ class ProductService {
         this.productModel =model;
     }
 
-    async getAllProducts() {
+    getAllProducts() {
         return this.productModel.getAllProducts();
     }
 }

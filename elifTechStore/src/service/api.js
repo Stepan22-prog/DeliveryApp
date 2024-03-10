@@ -6,6 +6,7 @@ class API {
             method,
             headers: {
                 accept: 'application/json',
+                "Content-type": 'application/json',
             },
             body
         });
