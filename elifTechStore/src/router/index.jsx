@@ -8,7 +8,7 @@ export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<Main setToCart={setToCart} />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={<Cart cart={cart} setToCart={setToCart} />} />
     </Routes>
   )
 }
