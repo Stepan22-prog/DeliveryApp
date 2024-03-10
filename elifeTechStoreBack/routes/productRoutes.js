@@ -15,4 +15,14 @@ router.get('/', async (req, res, next) => {
   }
 }, responseMiddleware);
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    res.data = await productService.getProductsFromShop(req.params.id);
+  } catch (err) {
+    res.err = err.message;
+  } finally {
+    next();
+  }
+}, responseMiddleware);
+
 export { router };

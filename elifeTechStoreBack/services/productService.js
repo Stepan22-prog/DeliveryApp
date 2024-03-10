@@ -8,6 +8,10 @@ class ProductService {
     getAllProducts() {
         return this.productModel.getAllProducts();
     }
+
+    getProductsFromShop(id) {
+        return this.productModel.getProductsFromShop(id);
+    }
 }
 
 const productService = new ProductService(new ProductModel());
