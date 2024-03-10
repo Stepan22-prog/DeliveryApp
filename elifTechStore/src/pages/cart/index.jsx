@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Form from "./Form";
 import CartItem from "./CartItem";
+import CartService from "../../service/cartService";
+import { validateEmail, validatePhone } from "../../validation/validation";
 import './cart.css'
+
+const cartService = new CartService();
 
 export default function Cart({ cart, setToCart }) {
   const [name, setName] = useState('');
@@ -12,6 +16,49 @@ export default function Cart({ cart, setToCart }) {
 	const [phoneError, setPhoneError] = useState(false);
 	const [address, setAddress] = useState('');
 	const [addressError, setAddressError] = useState(false);
+
+  function validateForm() {
+    let error = false;
+    if (name.length < 2) {
+      setNameError(true);
+      error = true;
+    }
+    if (!validateEmail) {
+      setEmailError(true);
+      error = true;
+    }
+    if(!validatePhone) {
+      setPhoneError(true);
+      error = true;
+    }
+    if(address.length < 5) {
+      setAddressError(true);
+      error = true;
+    }
+    return error;
+  }
+
+  function calculateTotalPrice() {
+    return cart.reduce((price, cartItem) => price + (cartItem.price * cartItem.count), 0)
+  }
+  
+  function submitOrder() {
+    if(validateForm()) {
+      return;
+    }
+
+    const body = {
+      name,
+      email,
+      phone,
+      address,
+      products: cart.map((cartItem) => ({productId: cartItem.id, quantity: cartItem.count})),
+      totalPrice: calculateTotalPrice(),
+    }
+
+    cartService.createOrder(body);
+  }
+
   return (
     <div className="cart">
       <div className="cart__row">
@@ -44,8 +91,8 @@ export default function Cart({ cart, setToCart }) {
         </div>
       </div>
       <div className="cart__bottom">
-        <h2 className="cart__total-price">Total price: {cart.reduce((price, cartItem) => price + (cartItem.price * cartItem.count), 0)}</h2>
-        <button className="cart__button button">Submit</button>
+        <h2 className="cart__total-price">Total price: {calculateTotalPrice()}</h2>
+        <button className="cart__button button" onClick={() => submitOrder()}>Submit</button>
       </div>
     </div>
   )
