@@ -5,11 +5,10 @@ class ProductService {
         this.productModel =model;
     }
 
-    getAllProducts() {
-        return this.productModel.getAllProducts();
-    }
-
-    getProductsFromShop(id) {
+    getProducts(id) {
+        if (id === '0') {
+            return this.productModel.getAllProducts();
+        }
         return this.productModel.getProductsFromShop(id);
     }
 }
