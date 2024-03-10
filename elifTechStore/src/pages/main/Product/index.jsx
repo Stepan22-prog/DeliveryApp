@@ -1,6 +1,6 @@
 import './product.css';
 
-export default function Product({title, img, price, setToCart}) {
+export default function Product({id, title, img, price, setToCart}) {
   return (
     <div className="product">
         <div className="product__img">
@@ -9,7 +9,7 @@ export default function Product({title, img, price, setToCart}) {
         <h2 className="product__title">{title}</h2>
         <div className="product__row">
             <h3 className="product__price">{price} грн</h3>
-            <button onClick={() => setToCart()} className="product__btn">Add to Cart</button>
+            <button onClick={() => setToCart(prevState => [...prevState, {id, title, photo: img, price, count: 1}])} className="product__btn">Add to Cart</button>
         </div>
     </div>
   )
