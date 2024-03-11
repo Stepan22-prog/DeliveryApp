@@ -32,7 +32,7 @@ export default function CartItem({ id, title, photo, count, price, setToCart }) 
           <button className="cart-item-count__btn button" onClick={() => updatePrice(count - 1)}>-</button>
         </div>
         <div className="cart-item-info__row">
-          <h3 className="cart-item-info__price">{count * price}</h3>
+          <h3 className="cart-item-info__price">{(count * price).toFixed(2)}</h3>
           <button className="cart-item-info__delete" onClick={() => deleteItem()}>delete</button>
         </div>
       </div>

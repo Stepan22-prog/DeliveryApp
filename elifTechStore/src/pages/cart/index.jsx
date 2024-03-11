@@ -44,7 +44,7 @@ export default function Cart({ cart, setToCart }) {
   }
 
   function calculateTotalPrice() {
-    return cart.reduce((price, cartItem) => price + (cartItem.price * cartItem.count), 0)
+    return cart.reduce((price, cartItem) => price + (cartItem.price * cartItem.count), 0).toFixed(2);
   }
   
   function submitOrder() {
