@@ -4,6 +4,10 @@ export default function Product({id, cart, title, img, price, setToCart}) {
   function checkProductInCart(id, cart) {
     return cart.some((cartItem) => cartItem.id === id);
   }
+  function saveToCart() {
+    setToCart(prevState => [...prevState, {id, title, photo: img, price, count: 1}]);
+    
+  }
   return (
     <div className="product">
         <div className="product__img">
