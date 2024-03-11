@@ -1,15 +1,19 @@
+import heartSvg from '../../../assets/heart.svg';
+import heartWithBackSvg from '../../../assets/heart-background.svg';
 import './product.css';
 
-export default function Product({id, cart, title, img, price, setToCart}) {
+export default function Product({id, cart, title, img, price, setToCart, favorites, setFavorites}) {
   function checkProductInCart(id, cart) {
     return cart.some((cartItem) => cartItem.id === id);
   }
-  function saveToCart() {
-    setToCart(prevState => [...prevState, {id, title, photo: img, price, count: 1}]);
-    
+
+  function checkFavorite(id, favorites) {
+    return favorites.includes(id);
   }
+
   return (
     <div className="product">
+        <button className="product__favorite" onClick={() => setFavorites(prevState => [...prevState, id])}><img src={checkFavorite(id, favorites) ? heartWithBackSvg : heartSvg} alt="Add to favorite" /></button>
         <div className="product__img">
             <img src={img} alt={title} />
         </div>

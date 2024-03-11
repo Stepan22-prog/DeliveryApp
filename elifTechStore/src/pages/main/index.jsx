@@ -7,6 +7,7 @@ const productService = new ProductService();
 
 export default function Main({ cart, setToCart }) {
   const [products, setProducts] = useState([]);
+	const [favorites, setFavorites] = useState([]);
 	const [shop, setShop] = useState(0);
 
 	async function getProducts(shop) {
@@ -17,6 +18,19 @@ export default function Main({ cart, setToCart }) {
 	useEffect(() => {
 		getProducts(shop);
 	}, [shop]);
+
+	useEffect(() => {
+		const dataInStorage = localStorage.getItem('favorites');
+    if (dataInStorage && dataInStorage.length > 0) {
+      setFavorites(JSON.parse(dataInStorage));
+    }
+	}, []);
+
+
+	useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+		setProducts(prevState => prevState.map(productItem))
+  }, [favorites]);
 
   return (
 	<main className="main">
@@ -35,6 +49,8 @@ export default function Main({ cart, setToCart }) {
 					price={product.price}
 					cart={cart}
 					setToCart={setToCart}
+					favorites={favorites}
+					setFavorites={setFavorites}
 				/>)
 			})}
 		</div>
