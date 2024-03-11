@@ -10,6 +10,10 @@ router.get('/:id', async (req, res, next) => {
     res.data = await productService.getProducts(req.params.id);
   } catch (err) {
     res.err = err.message;
+    console.error(err);
+    if (err.message === "Shop with such id not found") {
+      res.errCode = 404;
+    }
   } finally {
     next();
   }

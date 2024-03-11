@@ -7,9 +7,9 @@ const router = Router();
 
 router.post('/', async (req, res, next) => {
   try {
-    const body = req.body;
-    await cartService.createOrder(body);
+    res.data = await cartService.createOrder(req.body);
   } catch (err) {
+    console.error(err);
     res.err = err.message;
   } finally {
     next();
