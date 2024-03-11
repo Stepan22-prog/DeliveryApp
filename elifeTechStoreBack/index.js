@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 initRoutes(app);
 
-const port = 3080;
+const port = process.env.APP_PORT;
 app.listen(port, () => {});
 
 export { app };
