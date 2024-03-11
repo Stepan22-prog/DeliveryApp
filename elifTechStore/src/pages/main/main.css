@@ -16,8 +16,12 @@
     flex: 0 0 20%;
     margin-right: 20px;
     padding-right: 20px;
-    padding-top: 30px;
+    padding-top: 10px;
     min-height: calc(100vh - 97px);
+}
+
+.shops__title {
+    margin: 0;
 }
 
 .shop-item {
