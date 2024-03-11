@@ -23,11 +23,11 @@ export default function Cart({ cart, setToCart }) {
       setNameError(true);
       error = true;
     }
-    if (!validateEmail) {
+    if (validateEmail) {
       setEmailError(true);
       error = true;
     }
-    if(!validatePhone) {
+    if(validatePhone) {
       setPhoneError(true);
       error = true;
     }
@@ -92,11 +92,11 @@ export default function Cart({ cart, setToCart }) {
             price={cartItem.price}
             setToCart={setToCart}
           />)
-          : <h2>No Items</h2>}
+          : <h2>No products in cart</h2>}
         </div>
       </div>
       <div className="cart__bottom">
-        <h2 className="cart__total-price">Total price: {calculateTotalPrice()}</h2>
+        <h2 className="cart__total-price">Total price: {calculateTotalPrice()} UAN</h2>
         <button className="cart__button button" onClick={() => submitOrder()}>Submit</button>
       </div>
     </div>

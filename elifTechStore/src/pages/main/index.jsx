@@ -11,13 +11,13 @@ export default function Main({ cart, setToCart }) {
 	const [favorites, setFavorites] = useState([]);
 	const [shop, setShop] = useState(0);
 
-	function checkFavorite(id, favorites) {
-    return favorites.includes(id);
-  }
-
-	const checkFavoriteCallBack = useCallback(
-		(id, favorites) => checkFavorite(id, favorites), 
+	const checkFavorite = useCallback(
+		(id, favorites) => favorites.includes(id), 
 	[]);
+
+	const checkProductInCart = useCallback((id, cart) => {
+		return cart.some((cartItem) => cartItem.id === id);
+	}, []);
 	
 	function sortProducts(products, type = "price-ascending") {
 		function sortFavorites(a, b) {
@@ -90,9 +90,9 @@ export default function Main({ cart, setToCart }) {
 						img={product.photo}
 						price={product.price}
 						date={new Date(product.date)}
-						cart={cart}
+						inCart={checkProductInCart(product.id, cart)}
 						setToCart={setToCart}
-						favorite={checkFavoriteCallBack(product.id, favorites)}
+						favorite={checkFavorite(product.id, favorites)}
 						setFavorites={setFavorites}
 					/>)
 				})}
