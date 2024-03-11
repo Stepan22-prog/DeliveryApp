@@ -5,7 +5,7 @@ import './main.css';
 
 const productService = new ProductService();
 
-export default function Main({ setToCart }) {
+export default function Main({ cart, setToCart }) {
   const [products, setProducts] = useState([]);
 	const [shop, setShop] = useState(0);
 
@@ -33,6 +33,7 @@ export default function Main({ setToCart }) {
 					title={product.title} 
 					img={product.photo}
 					price={product.price}
+					cart={cart}
 					setToCart={setToCart}
 				/>)
 			})}

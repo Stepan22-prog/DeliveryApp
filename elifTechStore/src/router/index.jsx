@@ -7,7 +7,7 @@ export default function Router() {
   const [cart, setToCart] = useState([]);
   return (
     <Routes>
-      <Route path="/" element={<Main setToCart={setToCart} />} />
+      <Route path="/" element={<Main cart={cart} setToCart={setToCart} />} />
       <Route path="/cart" element={<Cart cart={cart} setToCart={setToCart} />} />
     </Routes>
   )
