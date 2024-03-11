@@ -3,6 +3,9 @@ import './cartItem.css';
 
 export default function CartItem({ id, title, photo, count, price, setToCart }) {
   function updatePrice(count) {
+    if (count < 1) {
+      return;
+    }
     setToCart((prevValue) => {
       return prevValue.map(
         (cartItem) => cartItem.id === id ? {...cartItem, count} : cartItem
