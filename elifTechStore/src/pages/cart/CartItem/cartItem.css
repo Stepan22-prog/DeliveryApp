@@ -28,6 +28,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+  gap: 10px;
 }
 
 .cart-item-info__price {
@@ -40,15 +41,21 @@
 }
 
 .cart-item-count input {
-  padding: 3px 2px;
+  padding: 4px 2px;
   width: 50px;
   margin: 0 10px;
 }
 
 .cart-item-info__delete {
-  background: red;
+  background: #a01010;
   color: white;
   padding: 8px 15px;
   border: none;
   border-radius: 5px;
+  transition: 0.3s;
+}
+
+.cart-item-info__delete:hover {
+  box-shadow: 0px 0px 7px 1px #a01010;
+  cursor: pointer;
 }

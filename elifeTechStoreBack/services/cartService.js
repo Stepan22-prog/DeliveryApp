@@ -32,7 +32,7 @@ class CartService {
   
       this.createOrderItem(orderData, insertId);
 
-      return { newOrderId: insertId };
+      return { orderId: insertId };
     } catch (error) {
       throw error;
     }

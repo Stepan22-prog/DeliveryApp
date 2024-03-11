@@ -4,7 +4,8 @@ import './from.css';
 export default function Form({
 	name, email, phone, address, setName, setEmail,
 	setPhone, setAddress, nameError, emailError,
-	phoneError, addressError
+	phoneError, addressError, setNameError, setEmailError,
+	setPhoneError, setAddressError
 }) {
 	return (
 		<div className="form">
@@ -14,7 +15,10 @@ export default function Form({
 					id="name"
 					error={nameError}
 					value={name}
-					setValue={setName}
+					setValue={(value) => {
+						setName(value);
+						setNameError(false);
+					}}
 				/>
 				{nameError && <p className="from__error">Please enter a valid name</p>}
 			</div>
@@ -24,7 +28,10 @@ export default function Form({
 					id="email"
 					error={emailError}
 					value={email}
-					setValue={setEmail}
+					setValue={(value) => {
+						setEmail(value);
+						setEmailError(false);
+					}}
 				/>
 				{emailError && <p className="from__error">Please enter a valid email</p>}
 			</div>
@@ -34,7 +41,10 @@ export default function Form({
 					id="name"
 					error={phoneError}
 					value={phone}
-					setValue={setPhone}
+					setValue={(value) => {
+						setPhone(value);
+						setPhoneError(false);
+					}}
 				/>
 				{phoneError && <p className="from__error">Please enter a valid phone</p>}
 			</div>
@@ -44,7 +54,10 @@ export default function Form({
 					id="address"
 					error={addressError}
 					value={address}
-					setValue={setAddress}
+					setValue={(value) => {
+						setAddress(value);
+						setAddressError(false);
+					}}
 				/>
 				{addressError && <p className="from__error">Please enter a valid address</p>}
 			</div>

@@ -1,3 +1,24 @@
+.cart-success-message {
+  color: #fff;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.cart-success-message.success {
+  background: #006100;
+}
+
+.cart-success-message.error {
+  background: #a01010b3;
+}
+
+.cart-success-message__text {
+  font-size: 18px;
+  margin: 0;
+}
+
 .cart__row {
   display: flex;
   gap: 15px;

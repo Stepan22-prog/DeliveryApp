@@ -16,6 +16,7 @@ export default function Cart({ cart, setToCart }) {
 	const [phoneError, setPhoneError] = useState(false);
 	const [address, setAddress] = useState('');
 	const [addressError, setAddressError] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   function validateForm() {
     let error = false;
@@ -23,11 +24,11 @@ export default function Cart({ cart, setToCart }) {
       setNameError(true);
       error = true;
     }
-    if (validateEmail) {
+    if (!validateEmail(email)) {
       setEmailError(true);
       error = true;
     }
-    if(validatePhone) {
+    if(!validatePhone(phone)) {
       setPhoneError(true);
       error = true;
     }
@@ -47,7 +48,7 @@ export default function Cart({ cart, setToCart }) {
     return cart.reduce((price, cartItem) => price + (cartItem.price * cartItem.count), 0).toFixed(2);
   }
   
-  function submitOrder() {
+  async function submitOrder() {
     if(validateForm()) {
       return;
     }
@@ -61,11 +62,27 @@ export default function Cart({ cart, setToCart }) {
       totalPrice: calculateTotalPrice(),
     }
 
-    cartService.createOrder(body);
+    const response = await cartService.createOrder(body);
+    orderStatus(response);
+  }
+
+  function orderStatus(response) {
+    if (response.orderId) {
+      setSuccessMessage("success");
+    } else {
+      setSuccessMessage("error");
+    }
+    setTimeout(() => {
+        setSuccessMessage(null);
+    }, 3000);
   }
 
   return (
     <div className="cart">
+      {successMessage &&
+      <div className={`cart-success-message ${successMessage === "success" ? "success" : "error"}`}>
+        <h2 className="cart-success-message__text">{successMessage === "success" ? "Your order has been saved successfully. Thank you!" : "An error has occurred. Try again"}</h2>
+      </div>}
       <div className="cart__row">
         <Form 
           name={name}
@@ -80,6 +97,10 @@ export default function Cart({ cart, setToCart }) {
           emailError={emailError}
           phoneError={phoneError}
           addressError={addressError}
+          setNameError={setNameError}
+          setEmailError={setEmailError}
+          setPhoneError={setPhoneError}
+          setAddressError={setAddressError}
         />
         <div className="cart-items">
           {cart.length > 0

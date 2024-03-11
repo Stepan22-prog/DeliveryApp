@@ -18,5 +18,5 @@ img {
 }
 
 .input.error {
-    border-color: red;
+    border: 2px solid #a01010;
 }
