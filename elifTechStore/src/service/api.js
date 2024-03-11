@@ -1,5 +1,5 @@
 class API {
-    apiBase = 'http://localhost:3080';
+    apiBase = import.meta.env.VITE_APP_SERVER_ADDRESS;
 
     async makeQuery({url, method = 'GET', body}) {
         const response = await fetch(`${this.apiBase}${url}`, {
