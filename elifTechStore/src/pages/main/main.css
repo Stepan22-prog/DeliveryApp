@@ -28,3 +28,20 @@
     color: 20px;
     padding: 10px 15px;
 }
+
+.sorting {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.sorting__title {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.sorting__select {
+    background: transparent;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 8px;
+}

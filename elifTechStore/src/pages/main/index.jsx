@@ -69,7 +69,9 @@ export default function Main({ cart, setToCart }) {
 			<button className="shop-item button" onClick={() => setShop(2)}>Pharmacy</button>
 		</div>
 		<div className="product-body">
-			<select className="sorting" onChange={(event) => {
+			<div className="sorting">
+				<h3 className="sorting__title">Sort by:</h3>
+				<select className="sorting__select" onChange={(event) => {
 				const sortedProducts = sortProducts(products, event.target.value);
 				setProducts([...sortedProducts]);
 			}}>
@@ -78,6 +80,7 @@ export default function Main({ cart, setToCart }) {
 				<option value="date-ascending">Date ascending</option>
 				<option value="date-descending">Date descending</option>
 			</select>
+			</div>
 			<div className="product-list">
 				{products.length > 0 && products.map((product) => {
 					return (<Product

@@ -48,3 +48,7 @@
     background: transparent;
     border: none;
 }
+
+.product__date {
+    font-size: 14px;
+}
