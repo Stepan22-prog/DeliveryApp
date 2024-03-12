@@ -16,7 +16,8 @@ Web application where users can order medicines delivery
 1. In the command line (terminal) go to the elifeTechStoreBack folder:
 `cd elifeTechStoreBack`
 2. In the folder replace in file **.env** key values to real
-3. To start the server in the command line (terminal) in the folder, run:
+3. Run: `npm install`
+4. To start the server in the command line (terminal) in the folder, run:
 `npm start`
 
 ### Frontend
@@ -24,5 +25,6 @@ Web application where users can order medicines delivery
 1. In the command line (terminal) go to the elifeTechStore folder:
 `cd elifeTechStore`
 2. In the  folder replace in file **.env** key values to real
-3. To start the client in the command line (terminal) in the folder, run:
+3. Run: `npm install`
+4. To start the client in the command line (terminal) in the folder, run:
 `npm run dev`
