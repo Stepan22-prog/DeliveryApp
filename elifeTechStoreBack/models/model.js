@@ -8,11 +8,14 @@ class Model {
 
 	async init() {
 		try {
-			this.connection = await mysql.createConnection({
+			this.connection = mysql.createPool({
 				host: process.env.DB_HOST,
 				user: process.env.DB_USER,
 				password: process.env.DB_PASSWORD,
 				database: process.env.DB_DATABASE,
+				maxIdle: 0,
+				idleTimeout: 60000,
+				enableKeepAlive: true,
 			});
 		} catch (error) {
 			throw error;

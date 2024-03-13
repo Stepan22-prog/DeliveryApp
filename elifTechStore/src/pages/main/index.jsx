@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Product from "./Product";
 import ProductService from "../../service/productsService";
 import './main.css';
-import { useCallback } from "react";
+import loadingSvg from '../../assets/loading.svg';
 
 const productService = new ProductService();
 
@@ -82,6 +82,11 @@ export default function Main({ cart, setToCart }) {
 			</select>
 			</div>
 			<div className="product-list">
+				{products.length === 0 && 
+				<div className="loading">
+					<div className="loading__icon"><img src={loadingSvg} alt="loading img" /></div>
+					<h2 className="loading__text">Loading...</h2>
+				</div>}
 				{products.length > 0 && products.map((product) => {
 					return (<Product
 						key={product.id}

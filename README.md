@@ -28,3 +28,7 @@ Web application where users can order medicines delivery
 3. Run: `npm install`
 4. To start the client in the command line (terminal) in the folder, run:
 `npm run dev`
+
+### Visit website
+
+https://coruscating-selkie-f6cc9f.netlify.app
